@@ -1,0 +1,74 @@
+<%- include("partials/header.ejs") %>
+
+<header class="masthead" style="background-image:url('img/headers/index-bg.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="site-heading">
+          <h1 style="font-size: 77px;">Alfa Cycling Team</h1><span class="subheading">See us in action, celebrating,
+            suffering or having fun.<br></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8">
+      <% if(blogs) {%>
+      <% blogs.forEach((blog, blogs) => { %>
+      <div class="post-preview">
+        <a href="/blogs/<%=blog.id%>">
+          <h2 class="post-title"><%= blog.title %></h2>
+          <h3 class="post-subtitle"><%- blog.body.substring(0,70) %>...</h3>
+        </a>
+        <p class="post-meta"><%= blog.created.toDateString() %></p>
+      </div>
+      <hr>
+      <% }) %>
+      <% } %>
+      <div class="clearfix"><a href="/blogs"><button class="btn btn-primary float-right" type="button">All
+            Posts&nbsp;⇒</button></a></div>
+    </div>
+    <div class="col">
+      <div style="margin-right: 20px;margin-left: 20px;width: 289px;margin-top: 50px;">
+        <h5 class="text-monospace text-capitalize text-center" style="margin-bottom: 14px;font-size: 36px;">calendar
+        </h5>
+        <div class="card" data-aos="zoom-in-up" style="margin-right: 0;margin-bottom: 30px;"><img
+            class="card-img w-100 d-block" src="img/calendar/calendar01.jpg" style="filter: brightness(70%);">
+          <div class="card-img-overlay">
+            <h4 class="text-monospace" style="color: rgb(255,255,255);">National Championship</h4>
+            <p style="color: rgb(255,255,255);">15-20/4</p>
+          </div>
+        </div>
+        <div class="card" data-aos="zoom-in-up" style="margin-bottom: 30px;"><img class="card-img w-100 d-block"
+            src="/img/calendar/calendar02.jpg" style="filter: brightness(70%);">
+          <div class="card-img-overlay">
+            <h4 class="text-monospace" style="color: rgb(255,255,255);">National Championship</h4>
+            <p style="color: rgb(255,255,255);">15-20/4</p>
+          </div>
+        </div>
+        <div class="card" data-aos="zoom-in-up"><img class="card-img w-100 d-block" src="/img/calendar/calendar03.jpg"
+            style="filter: brightness(70%);">
+          <div class="card-img-overlay">
+            <h4 class="text-monospace" style="color: rgb(255,255,255);">National Championship</h4>
+            <p style="color: rgb(255,255,255);">15-20/4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="brands"><a href="/sponsors" style="margin: 60px;margin-bottom: 0;"> <img
+      src="img/logos/bw-logos/physiogold_logo.png" style="width: 139px;height: 60px;filter: contrast(50%);"><img
+      src="img/logos/bw-logos/petrolko_logo.png" style="width: 100px;height: 50px;filter: contrast(50%);"><img
+      src="img/logos/bw-logos/alpescapital_logo.png" style="width: 100px;filter: contrast(50%);"><img
+      src="img/logos/bw-logos/fgi_logo.png" style="width: 200px;height: 60px;filter: contrast(50%);"><img
+      src="img/logos/bw-logos/whitebox_logo.png" style="width: 100px;filter: contrast(50%);"><img
+      src="img/logos/bw-logos/drugstore_logo.png" style="width: 100px;filter: contrast(50%);"></a>
+</div>
+
+<%- include("partials/footer.ejs") %>

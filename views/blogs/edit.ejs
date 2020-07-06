@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Alfa Cycling</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/Brands.css">
+  <link rel="stylesheet" href="/css/Projects-Horizontal.css">
+  <link rel="stylesheet" href="/css/Contact-Form-Clean.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="/css/Login-Form-Clean.css">
+  <script src="https://cdn.tiny.cloud/1/<%= tiny_api %>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#tiny'
+    });
+  </script>
+</head>
+
+<body>
+  <div class="contact-clean" style="background-color: rgb(255,255,255);">
+    <form method="post" action="/blogs/<%=blog[0].id%>?_method=PUT">
+      <h2 class="text-center">Edit Blog Post</h2>
+      <div class="form-group"><input class="form-control" type="text" name="title" value="<%= blog[0].title%>"></div>
+      <div class="form-group"><input class="form-control" type="text" name="subtitle" value="<%= blog[0].subtitle%>">
+      </div>
+      <div class="form-group"><input class="form-control" type="text" name="image" value="<%= blog[0].image%>"></div>
+      <div class="form-group"><textarea id="tiny" class="form-control" name="body" placeholder="Message"
+          rows="10"><%- blog[0].body%></textarea>
+      </div>
+      <div class=" form-group">
+        <a href="/blogs"><button class="btn btn-primary" style="background-color: #0085a1;">Back&nbsp;</button></a>
+        <button class="btn btn-primary" type="submit" style="background-color: #0085a1;margin-left: 10px;">send
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <%- include("../partials/footer.ejs") %>

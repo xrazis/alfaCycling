@@ -1,0 +1,55 @@
+<%- include("../partials/header.ejs") %>
+
+<header class="masthead" style="background-image:url('<%= blog[0].image %>');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="post-heading">
+          <h1> <%= blog[0].title %></h1>
+          <h2 class="subheading"><%= blog[0].subtitle %></h2><span class="meta">Posted
+            on&nbsp;<%= blog[0].created.toDateString() %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <%-blog[0].body %>
+      </div>
+    </div>
+  </div>
+</article>
+
+<div class="photo-gallery">
+  <div class="container">
+    <div class="intro"></div>
+    <div class="row photos">
+      <%blog.forEach(function(blog){ %>
+      <div class="col-sm-6 col-md-4 col-lg-3 item"><a data-lightbox="photos" href="<%= blog.post_image %>"><img
+            class="img-fluid" src="<%= blog.post_image %>"></a></div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<% if( currentUser ) { %>
+<div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-3"><a class="btn btn-danger btn-block text-center" role="button"
+          style="height: 50px;font-size: 11px;" href="/blogs/<%=blog_id%>?method=DELETE_" method="POST">delete</a>
+      </div>
+      <div class="col-md-3"><a class="btn btn-primary btn-block text-center" role="button"
+          style="height: 50px;font-size: 11px;" href="/blogs/<%=blog_id%>/edit">edit</a></div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<%- include("../partials/footer.ejs") %>

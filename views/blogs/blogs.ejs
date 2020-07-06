@@ -1,0 +1,51 @@
+<%- include("../partials/header.ejs") %>
+
+<header class="masthead" style="background-image:url('img/headers/blogs-bg.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="site-heading">
+          <h1 style="font-size: 77px;">Stories</h1><span class="subheading"> Read our latest
+            adventures.<br></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <% if(currentUser) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h2 class="subheading">Hello <%= currentUser.username %>!</h2><a class="btn btn-primary btn-block text-center"
+          role="button" data-bs-hover-animate="bounce" style="height: 50px;font-size: 11px;" href="/blogs/new">New
+          Post</a>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  <% } %>
+  <% if(blogs) {%>
+  <div class="article-list">
+    <div class="container">
+      <div class="row articles">
+        <% blogs.reverse().forEach((blog, blogs) => { %>
+        <div class="col-sm-6 col-md-4 item"><a href="/blogs/<%=blog.id%>"><img class="img-fluid"
+              src="<%= blog.image %>"></a>
+          <h3 class="name"><%= blog.title %></h3>
+          <small class=""><%= blog.created.toDateString() %></small>
+          <p class="description"><%- blog.body.substring(0,70) %>...</p>
+          <a class="action" href="/blogs/<%=blog.id%>"><i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<%- include("../partials/footer.ejs") %>
