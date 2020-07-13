@@ -18,34 +18,44 @@
   <% if(currentUser) { %>
   <div class="container">
     <div class="row">
+      <% if(message.length) {%>
+      <div class="alert alert-success" role="alert"
+        style="margin-bottom: 0px;margin-top: 16px;background-color: #ff0035;color: rgb(255,255,255);">
+        <span style="font-size: 15px;"><strong><%=message%></strong></span></div>
+      <%}%>
       <div class="col-md-3">
-        <h2 class="subheading">Hello <%= currentUser.username %>!</h2><a class="btn btn-primary btn-block text-center"
-          role="button" data-bs-hover-animate="bounce" style="height: 50px;font-size: 11px;" href="/blogs/new">New
-          Post</a>
+        <h2 class="subheading">Hello <%= currentUser.username %>!</h2>
+    </div>
+    <div class="col-md-3">
+      <a class="btn btn-primary btn-block text-center" role="button" style="height: 50px;font-size: 11px;"
+        href="/blogs/new">New
+        Post</a>
+    </div>
+    <div class="col-md-3 mb-2">
+      <a class="btn btn-primary btn-block text-center" role="button" style="height: 50px;font-size: 11px;"
+        href="/uploadphoto">Upload photos</a>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+<% } %>
+<% if(blogs) {%>
+<div class="article-list">
+  <div class="container">
+    <div class="row articles">
+      <% blogs.reverse().forEach((blog, blogs) => { %>
+      <div class="col-sm-6 col-md-4 item"><a href="/blogs/<%=blog.id%>"><img class="img-fluid"
+            src="<%= blog.image %>"></a>
+        <h3 class="name"><%= blog.title %></h3>
+        <small class=""><%= blog.created.toDateString() %></small>
+        <p class="description"><%- blog.body.substring(0,70) %>...</p>
+        <a class="action" href="/blogs/<%=blog.id%>"><i class="fa fa-arrow-circle-right"></i></a>
       </div>
-      <div class="col-md-3"></div>
-      <div class="col-md-3"></div>
-      <div class="col-md-3"></div>
+      <% }) %>
     </div>
   </div>
-  <% } %>
-  <% if(blogs) {%>
-  <div class="article-list">
-    <div class="container">
-      <div class="row articles">
-        <% blogs.reverse().forEach((blog, blogs) => { %>
-        <div class="col-sm-6 col-md-4 item"><a href="/blogs/<%=blog.id%>"><img class="img-fluid"
-              src="<%= blog.image %>"></a>
-          <h3 class="name"><%= blog.title %></h3>
-          <small class=""><%= blog.created.toDateString() %></small>
-          <p class="description"><%- blog.body.substring(0,70) %>...</p>
-          <a class="action" href="/blogs/<%=blog.id%>"><i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-        <% }) %>
-      </div>
-    </div>
-  </div>
-  <% } %>
+</div>
+<% } %>
 </div>
 
 <%- include("../partials/footer.ejs") %>

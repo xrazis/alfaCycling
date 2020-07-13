@@ -14,7 +14,8 @@ router.get("/", function (req, res) {
     } else {
       res.render("blogs/blogs", {
         blogs: blogs,
-        currentUser: req.user
+        currentUser: req.user,
+        message: req.flash("blogsMessage")
       });
     }
   });

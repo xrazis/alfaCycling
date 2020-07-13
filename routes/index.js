@@ -2,10 +2,13 @@ var express = require("express"),
   router = express.Router(),
   passport = require("passport"),
   nodemailer = require("nodemailer"),
+  multer = require('multer'),
+  middleware = require("../middleware/user"),
   db = require("../config/db_conn");
 
 const creds = require("../config/creds");
 
+//  NODEMAILER CONFIG
 var transport = {
   host: "linux85.papaki.gr",
   auth: {
@@ -23,6 +26,20 @@ transporter.verify((error, success) => {
     console.log("Nodemailer is running...");
   }
 });
+
+//  MULTER CONFIG
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/img/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+var upload = multer({
+  storage: storage
+})
 
 //  ROOT ROUTE
 router.get("/", function (req, res) {
@@ -75,7 +92,6 @@ router.post("/contact", function (req, res) {
 
 router.get("/contact", function (req, res) {
   res.render("contact");
-
 });
 
 //  SPONSORS ROUTE
@@ -117,6 +133,21 @@ router.post(
 router.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/blogs");
+});
+
+//  UPLOAD ROUTE FOR PHOTOS
+router.get("/uploadphoto", function (req, res) {
+  res.render("uploadphoto");
+});
+
+router.post("/uploadphoto", upload.array('images', 12), (req, res) => {
+  if (!req.files) {
+    req.flash('blogsMessage', "Error with uploading photos!");
+    res.redirect("/blogs");
+  } else {
+    req.flash('blogsMessage', "Photos uploaded successfully!");
+    res.redirect("/blogs");
+  }
 });
 
 // //  NON-EXISTENT ROUTE
