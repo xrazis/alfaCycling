@@ -10,7 +10,6 @@ var blogsRoute = require("./routes/blogs"),
   indexRoute = require("./routes/index");
 
 const creds = require("./config/creds");
-
 require("./middleware/passport")(passport);
 
 //  APP/CONFIG

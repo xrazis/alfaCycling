@@ -41,8 +41,11 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-3"></div>
-      <div class="col-md-3"><a class="btn btn-danger btn-block text-center" role="button"
-          style="height: 50px;font-size: 11px;" href="/blogs/<%=blog_id%>?method=DELETE_" method="POST">delete</a>
+      <div class="col-md-3">
+        <form action="/blogs/<%=blog_id%>?_method=DELETE" method="POST">
+          <button class="btn btn-danger btn-block text-center" type="submit"
+            style="height: 50px;font-size: 11px;">delete</button>
+        </form>
       </div>
       <div class="col-md-3"><a class="btn btn-primary btn-block text-center" role="button"
           style="height: 50px;font-size: 11px;" href="/blogs/<%=blog_id%>/edit">edit</a></div>

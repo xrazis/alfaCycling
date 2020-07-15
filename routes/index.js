@@ -140,7 +140,7 @@ router.get("/uploadphoto", function (req, res) {
   res.render("uploadphoto");
 });
 
-router.post("/uploadphoto", upload.array('images', 12), (req, res) => {
+router.post("/uploadphoto", middleware.isModderator, upload.array('images', 12), (req, res) => {
   if (!req.files) {
     req.flash('blogsMessage', "Error with uploading photos!");
     res.redirect("/blogs");

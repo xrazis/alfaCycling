@@ -1,9 +1,18 @@
 var express = require("express"),
   router = express.Router(),
   db = require("../config/db_conn"),
+  fs = require("fs"),
   middleware = require("../middleware/user");
 
 const creds = require("../config/creds");
+
+readPhotos = () => {
+  let mPhotos = [];
+  fs.readdirSync('./public/img/uploads/').forEach(file => {
+    mPhotos.push(file);
+  });
+  return mPhotos;
+};
 
 //  BLOGS ROUTE
 router.get("/", function (req, res) {
@@ -25,7 +34,7 @@ router.get("/", function (req, res) {
 router.post("/", middleware.isModderator, function (req, res) {
   var title = req.body.title;
   var subtitle = req.body.subtitle;
-  var image = req.body.image;
+  var image = "/img/uploads/" + req.body.image;
   var body = req.body.body;
   var posted_by = req.user.username;
 
@@ -41,8 +50,10 @@ router.post("/", middleware.isModderator, function (req, res) {
   });
 });
 
-router.get("/new", middleware.isModderator, function (req, res) {
+router.get("/new", function (req, res) {
+  let mPhotos = readPhotos();
   res.render("blogs/new", {
+    photos: mPhotos,
     tiny_api: creds.tiny_api
   });
 });
@@ -78,9 +89,11 @@ router.get("/:id/edit", middleware.isModderator,
       if (error) {
         console.log(error);
       } else {
-        console.log(Foundblog);
+        let mPhotos = readPhotos();
         res.render("blogs/edit", {
-          tiny_api: creds.TINY_API,
+          photos: mPhotos,
+          tiny_api: creds.tiny_api,
+          blog_id: blog_id,
           blog: Foundblog
         });
       }
@@ -90,12 +103,12 @@ router.get("/:id/edit", middleware.isModderator,
 router.put("/:id", middleware.isModderator, function (req, res) {
   var blog_id = req.params.id;
   var title = req.body.title;
-  var image = req.body.image;
+  var image = "/img/uploads/" + req.body.image;
   var body = req.body.body;
   var edited = new Date();
-  var edited_by = req.user;
+  var edited_by = req.user.username;
 
-  var upBlog = [title, image, body, blog_id, edited, edited_by];
+  var upBlog = [title, image, body, edited, edited_by, blog_id];
 
   var sql = "UPDATE blogs SET title = ?, image = ?, body = ?, edited = ?,  edited_by = ? WHERE id = ?;";
   db.query(sql, upBlog, function (error, upblog) {
@@ -111,7 +124,7 @@ router.put("/:id", middleware.isModderator, function (req, res) {
 router.delete("/:id", middleware.isModderator, function (req, res) {
   var blog_id = req.params.id;
   var sql =
-    "DELETE FROM images WHERE images.blog_id = ?;DELETE FROM blogs WHERE blogs.id = ?;";
+    "DELETE FROM images WHERE blog_id = ?;DELETE FROM blogs WHERE id = ?;";
   db.query(sql, [blog_id, blog_id], function (error) {
     if (error) {
       console.log(error);

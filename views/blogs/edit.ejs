@@ -26,18 +26,28 @@
 
 <body>
   <div class="contact-clean" style="background-color: rgb(255,255,255);">
-    <form method="post" action="/blogs/<%=blog[0].id%>?_method=PUT">
+    <form method="post" action="/blogs/<%=blog_id%>?_method=PUT">
       <h2 class="text-center">Edit Blog Post</h2>
       <div class="form-group"><input class="form-control" type="text" name="title" value="<%= blog[0].title%>"></div>
       <div class="form-group"><input class="form-control" type="text" name="subtitle" value="<%= blog[0].subtitle%>">
       </div>
-      <div class="form-group"><input class="form-control" type="text" name="image" value="<%= blog[0].image%>"></div>
+      <div class="form-group"><select class="form-control" name="image">
+          <optgroup label="Blog Header Image">
+            <option selected="<%= blog[0].image.replace("/img/uploads/", "")%>">
+              <%= blog[0].image.replace("/img/uploads/", "");%></option>
+            <% photos.reverse().forEach((photo, photos) => { %>
+            <option value="<%= photo %>"><%= photo %></option>
+            <% }) %>
+          </optgroup>
+        </select></div>
       <div class="form-group"><textarea id="tiny" class="form-control" name="body" placeholder="Message"
           rows="10"><%- blog[0].body%></textarea>
       </div>
-      <div class=" form-group">
-        <a href="/blogs"><button class="btn btn-primary" style="background-color: #0085a1;">Back&nbsp;</button></a>
-        <button class="btn btn-primary" type="submit" style="background-color: #0085a1;margin-left: 10px;">send
+      <div class="form-group">
+        <a href="/blogs"><button class="btn btn-primary"
+            style="background-color: #0085a1 !important;">Back&nbsp;</button></a>
+        <button class="btn btn-primary" type="submit"
+          style="background-color: #0085a1 !important;margin-left: 10px;">send
         </button>
       </div>
     </form>
