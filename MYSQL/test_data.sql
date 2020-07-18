@@ -15,19 +15,19 @@ VALUES ("Tour Of Albania",
         "Valuable experience for the future",
         "https://ik.imagekit.io/zl35iokim/serbia001_DYC1rrEbA.jpg",
         "<p>Our last race of the season was the 59th Tour De Serbia. A very hard race with a lot of professional teams which was sure to deliver exciting action and four days of quality racing.&nbsp;</p><p>Due to the national U23 championship taking place during the same dates as the tour and a training accident that found a teammate being left with a broken collarbone, we were forced to participate short on riders. This year&#39;s edition took place in two different countries, starting in Bosnia, with a circuit around the city of Sarajevo.&nbsp;</p><p>The next day we traveled back to Serbia, crossing the borders while racing through magnificent natural scenery. Unfortunately, we couldn&#39;t animate the race but at least tried our best, acquired valuable experience for the future, and promised ourselves to return stronger and better prepared.</p>");
-# INSERT INTO images (blog_id, post_image)
-# VALUES (1,
-#         "https://ik.imagekit.io/zl35iokim/albania002_XQ6T1wSK_.jpg"),
-#        (1,
-#         "https://ik.imagekit.io/zl35iokim/albania003_X2rm1Uzm5.jpg"),
-#        (1,
-#         "https://ik.imagekit.io/zl35iokim/albania004_oWgglOpm4w.jpg"),
-#        (3,
-#         "https://ik.imagekit.io/zl35iokim/serbia002_nadKHTZ3_.jpg"),
-#        (3,
-#         "https://ik.imagekit.io/zl35iokim/serbia003_HIUpryMZK.jpg"),
-#        (3,
-#         "https://ik.imagekit.io/zl35iokim/serbia004_ydX0LHAK3z.jpg");
+ INSERT INTO images (blog_id, post_image)
+ VALUES (1,
+         "https://ik.imagekit.io/zl35iokim/albania002_XQ6T1wSK_.jpg"),
+        (1,
+         "https://ik.imagekit.io/zl35iokim/albania003_X2rm1Uzm5.jpg"),
+        (1,
+         "https://ik.imagekit.io/zl35iokim/albania004_oWgglOpm4w.jpg"),
+        (3,
+         "https://ik.imagekit.io/zl35iokim/serbia002_nadKHTZ3_.jpg"),
+        (3,
+         "https://ik.imagekit.io/zl35iokim/serbia003_HIUpryMZK.jpg"),
+        (3,
+         "https://ik.imagekit.io/zl35iokim/serbia004_ydX0LHAK3z.jpg");
 
 # INSERT INTO users (email, username, password)
 # VALUES ("test@email.com", "xaris", "password");
