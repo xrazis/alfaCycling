@@ -29,10 +29,10 @@ transporter.verify((error, success) => {
 
 //  MULTER CONFIG
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: (req, file, cb) => {
     cb(null, './public/img/uploads')
   },
-  filename: function (req, file, cb) {
+  filename: (req, file, cb) => {
     cb(null, Date.now() + '-' + file.originalname)
   }
 });
@@ -42,14 +42,14 @@ var upload = multer({
 })
 
 //  ROOT ROUTE
-router.get("/", function (req, res) {
+router.get("/", (req, res) => {
   res.redirect("/index");
 });
 
 //  INDEX ROUTE
-router.get("/index", function (req, res) {
+router.get("/index", (req, res) => {
   var sql = "SELECT * FROM blogs ORDER BY id DESC LIMIT 3;";
-  db.query(sql, function (error, blogs) {
+  db.query(sql, (error, blogs) => {
     if (error) {
       res.render("error");
     } else {
@@ -61,14 +61,14 @@ router.get("/index", function (req, res) {
 });
 
 //  ABOUT ROUTE
-router.get("/about", function (req, res) {
+router.get("/about", (req, res) => {
   res.render("about", {
     currentUser: req.user
   });
 });
 
 //  CONTACT ROUTE
-router.post("/contact", function (req, res) {
+router.post("/contact", (req, res) => {
   var email = req.body.email;
   var name = req.body.name;
   var message = req.body.message;
@@ -90,17 +90,17 @@ router.post("/contact", function (req, res) {
   });
 });
 
-router.get("/contact", function (req, res) {
+router.get("/contact", (req, res) => {
   res.render("contact");
 });
 
 //  SPONSORS ROUTE
-router.get("/sponsors", function (req, res) {
+router.get("/sponsors", (req, res) => {
   res.render("sponsors");
 });
 
 //  REGISTER ROUTE
-router.get("/register", function (req, res) {
+router.get("/register", (req, res) => {
   res.render("register", {
     message: req.flash("registerMessage")
   });
@@ -110,11 +110,11 @@ router.post("/register", passport.authenticate("local-signup", {
     successRedirect: "/blogs",
     failureRedirect: "/register"
   }),
-  function (req, res) {}
+  (req, res) => {}
 );
 
 //  LOGIN ROUTE
-router.get("/login", function (req, res) {
+router.get("/login", (req, res) => {
   res.render("login", {
     message: req.flash("loginMessage")
   });
@@ -126,17 +126,17 @@ router.post(
     successRedirect: "/blogs",
     failureRedirect: "/login"
   }),
-  function (req, res) {}
+  (req, res) => {}
 );
 
 //  LOGOUT ROUTE
-router.get("/logout", function (req, res) {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/blogs");
 });
 
 //  UPLOAD ROUTE FOR PHOTOS
-router.get("/uploadphoto", function (req, res) {
+router.get("/uploadphoto", (req, res) => {
   res.render("uploadphoto");
 });
 
@@ -149,10 +149,5 @@ router.post("/uploadphoto", middleware.isModderator, upload.array('images', 12),
     res.redirect("/blogs");
   }
 });
-
-// //  NON-EXISTENT ROUTE
-// router.get("*", function (req, res) {
-//   res.render("error");
-// });
 
 module.exports = router;

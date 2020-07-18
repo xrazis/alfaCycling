@@ -6,18 +6,18 @@ var express = require("express"),
 
 const creds = require("../config/creds");
 
-readPhotos = () => {
+readPhotos = (dir) => {
   let mPhotos = [];
-  fs.readdirSync('./public/img/uploads/').forEach(file => {
+  fs.readdirSync(dir).forEach(file => {
     mPhotos.push(file);
   });
   return mPhotos;
 };
 
 //  BLOGS ROUTE
-router.get("/", function (req, res) {
+router.get("/", (req, res) => {
   var sql = "SELECT * FROM blogs ORDER BY id LIMIT 50;";
-  db.query(sql, function (error, blogs) {
+  db.query(sql, (error, blogs) => {
     if (error) {
       res.render("error");
     } else {
@@ -31,35 +31,58 @@ router.get("/", function (req, res) {
 });
 
 // NEW ROUTE
-router.post("/", middleware.isModderator, function (req, res) {
+router.post("/", middleware.isModderator, (req, res) => {
   var title = req.body.title;
   var subtitle = req.body.subtitle;
   var image = "/img/uploads/" + req.body.image;
   var body = req.body.body;
   var posted_by = req.user.username;
+  var galleryPhotos = req.body.galleryPhotos;
 
   var newBlog = [title, subtitle, image, body, posted_by, posted_by];
-
   var sql = "INSERT INTO blogs (title,subtitle,image,body,posted_by,edited_by) VALUES (?, ?, ?, ?, ?, ?);";
-  db.query(sql, newBlog, function (error, blog) {
+
+  db.query(sql, newBlog, (error, blog) => {
     if (error) {
       console.log(error);
     } else {
-      res.redirect("/blogs");
+      var blog_id = blog.insertId;
+      var newGallery = [];
+
+      if (Array.isArray(galleryPhotos)) {
+        console.log("array");
+        [...galleryPhotos].forEach((photo) => {
+          newGallery.push([`/img/uploads/${photo}`, blog_id]);
+        });
+      } else {
+        newGallery = [
+          ['/img/uploads/' + galleryPhotos, blog_id]
+        ];
+      }
+
+      var imagesSql = "INSERT INTO images(post_image, blog_id) VALUES ?;";
+
+      db.query(imagesSql, [newGallery], (error, images) => {
+        if (error) {
+          console.log(error);
+        } else {
+          res.redirect("/blogs");
+        }
+      })
     }
   });
 });
 
-router.get("/new", function (req, res) {
-  let mPhotos = readPhotos();
+router.get("/new", middleware.isModderator, (req, res) => {
+  let photos = readPhotos('./public/img/uploads/');
   res.render("blogs/new", {
-    photos: mPhotos,
+    photos: photos,
     tiny_api: creds.tiny_api
   });
 });
 
 // SHOW ROUTE
-router.get("/:id", function (req, res) {
+router.get("/:id", (req, res) => {
   var blog_id = req.params.id;
   if (!blog_id) {
     return res.status(400).send({
@@ -69,7 +92,7 @@ router.get("/:id", function (req, res) {
   }
   var sql =
     "SELECT * FROM blogs LEFT JOIN images ON blogs.id = images.blog_id WHERE blogs.id = ?;";
-  db.query(sql, blog_id, function (error, foundblog) {
+  db.query(sql, blog_id, (error, foundblog) => {
     if (error) throw error;
     res.render("blogs/show", {
       blog: foundblog,
@@ -80,38 +103,50 @@ router.get("/:id", function (req, res) {
 });
 
 //  EDIT ROUTE
-router.get("/:id/edit", middleware.isModderator,
-  function (req, res) {
+router.get("/:id/edit", middleware.isLoggedIn,
+  (req, res) => {
     var blog_id = req.params.id;
     var sql =
       "SELECT * FROM blogs LEFT JOIN images ON blogs.id = images.blog_id WHERE blogs.id = ?;";
-    db.query(sql, blog_id, function (error, Foundblog) {
+    db.query(sql, blog_id, (error, foundblog) => {
       if (error) {
         console.log(error);
       } else {
-        let mPhotos = readPhotos();
+        let photos = readPhotos('./public/img/uploads/');
         res.render("blogs/edit", {
-          photos: mPhotos,
+          photos: photos,
           tiny_api: creds.tiny_api,
           blog_id: blog_id,
-          blog: Foundblog
+          blog: foundblog
         });
       }
     });
   });
 
-router.put("/:id", middleware.isModderator, function (req, res) {
+router.put("/:id", middleware.isLoggedIn, (req, res) => {
   var blog_id = req.params.id;
   var title = req.body.title;
-  var image = "/img/uploads/" + req.body.image;
+  var headerPhoto = "/img/uploads/" + req.body.headerPhoto;
+  var galleryPhotos = req.body.galleryPhotos;
   var body = req.body.body;
   var edited = new Date();
   var edited_by = req.user.username;
+  var newGallery = [];
 
-  var upBlog = [title, image, body, edited, edited_by, blog_id];
+  if (Array.isArray(galleryPhotos)) {
+    [...galleryPhotos].forEach((photo) => {
+      newGallery.push([`/img/uploads/${photo}`, blog_id]);
+    });
+  } else {
+    newGallery = [
+      ['/img/uploads/' + galleryPhotos, blog_id]
+    ];
+  }
 
-  var sql = "UPDATE blogs SET title = ?, image = ?, body = ?, edited = ?,  edited_by = ? WHERE id = ?;";
-  db.query(sql, upBlog, function (error, upblog) {
+  var upBlog = [blog_id, title, headerPhoto, body, edited, edited_by, blog_id, newGallery];
+  var sql = "DELETE FROM images WHERE blog_id = ?;UPDATE blogs SET title = ?, image = ?, body = ?, edited = ?,  edited_by = ? WHERE id = ?; INSERT INTO images (post_image, blog_id) VALUES ?;";
+
+  db.query(sql, upBlog, (error, upblog) => {
     if (error) {
       console.log(error);
     } else {
@@ -121,11 +156,11 @@ router.put("/:id", middleware.isModderator, function (req, res) {
 });
 
 //  DELETE ROUTE
-router.delete("/:id", middleware.isModderator, function (req, res) {
+router.delete("/:id", middleware.isModderator, (req, res) => {
   var blog_id = req.params.id;
   var sql =
     "DELETE FROM images WHERE blog_id = ?;DELETE FROM blogs WHERE id = ?;";
-  db.query(sql, [blog_id, blog_id], function (error) {
+  db.query(sql, [blog_id, blog_id], (error) => {
     if (error) {
       console.log(error);
     } else {

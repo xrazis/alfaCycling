@@ -45,6 +45,10 @@ app.use(function (req, res, next) {
 app.use("/", indexRoute);
 app.use("/blogs", blogsRoute);
 
+app.use(function (req, res, next) {
+  res.status(404).render("error.ejs");
+})
+
 //  live - plesk
 // const http = require("http");
 // http.createServer(app).listen(process.env.PORT);
