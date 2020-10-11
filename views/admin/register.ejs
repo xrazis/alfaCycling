@@ -1,0 +1,66 @@
+<%- include("../partials/header.ejs") %>
+
+<main class="page registration-page">
+  <section class="clean-block clean-form dark">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">Registration</h2>
+      </div>
+      <form method="POST">
+        <% if (error){ %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+        <% } %>
+        <div class="form-group">
+          <label for="name">Username</label
+          ><input
+            class="form-control item"
+            type="text"
+            id="name"
+            name="username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label
+          ><input
+            class="form-control item"
+            type="email"
+            id="email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label
+          ><input
+            class="form-control item"
+            type="password"
+            id="password"
+            name="password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password repeat</label
+          ><input
+            class="form-control item"
+            type="password"
+            id="password-1"
+            name="password_repeat"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Admin Code</label
+          ><input
+            class="form-control item"
+            type="password"
+            id="password-2"
+            name="admin_code"
+          />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<%- include("../partials/footer.ejs") %>

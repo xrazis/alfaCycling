@@ -1,58 +1,26 @@
 <%- include("../partials/header.ejs") %>
 
-<header class="masthead" style="background-image:url('<%= blog[0].image %>');">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 mx-auto">
-        <div class="post-heading">
-          <h1> <%= blog[0].title %></h1>
-          <h2 class="subheading"><%= blog[0].subtitle %></h2><span class="meta">Posted
-            on&nbsp;<%= blog[0].created.toDateString() %></span>
+<main class="page blog-post">
+  <section class="clean-block clean-post dark">
+    <div class="container">
+      <div class="block-content">
+        <div
+          class="post-image"
+          style="background-image: url('<%= blog[0].image %>')"
+        ></div>
+        <div class="post-body">
+          <h3><%= blog[0].title %></h3>
+          <div class="post-info">
+            <span>By <%= blog[0].posted_by %></span
+            ><span><%= blog[0].created.toDateString() %></span>
+          </div>
+          <h4><%= blog[0].subtitle %></h4>
+
+          <p><%-blog[0].body %></p>
         </div>
       </div>
     </div>
-  </div>
-</header>
-<article>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 mx-auto">
-        <%-blog[0].body %>
-      </div>
-    </div>
-  </div>
-</article>
-
-<div class="photo-gallery">
-  <div class="container">
-    <div class="intro"></div>
-    <div class="row photos">
-      <%blog.forEach(function(blog){ %>
-      <div class="col-sm-6 col-md-4 col-lg-4 item"><a data-lightbox="photos" href="<%= blog.post_image %>"><img
-            class="img-fluid" src="<%= blog.post_image %>"></a></div>
-      <% }) %>
-    </div>
-  </div>
-</div>
-
-<% if( currentUser ) { %>
-<div>
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-3">
-        <form action="/blogs/<%=blog_id%>?_method=DELETE" method="POST">
-          <button class="btn btn-danger btn-block text-center" type="submit"
-            style="height: 50px;font-size: 11px;">delete</button>
-        </form>
-      </div>
-      <div class="col-md-3"><a class="btn btn-primary btn-block text-center" role="button"
-          style="height: 50px;font-size: 11px;" href="/blogs/<%=blog_id%>/edit">edit</a></div>
-      <div class="col-md-3"></div>
-    </div>
-  </div>
-</div>
-<% } %>
+  </section>
+</main>
 
 <%- include("../partials/footer.ejs") %>

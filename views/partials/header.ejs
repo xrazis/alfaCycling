@@ -1,37 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Alfa Cycling Team</title>
+    <meta
+      name="description"
+      content="Alfa is an amateur team with professional dedication and approach to the sport."
+    />
+    <link
+      rel="stylesheet"
+      href="/stylesheets/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/styles.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Alfa Cycling Team</title>
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/Article-List.css">
-  <link rel="stylesheet" href="/css/Brands.css">
-  <link rel="stylesheet" href="/css/Projects-Horizontal.css">
-  <link rel="stylesheet" href="/css/Lightbox-Gallery.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-</head>
-
-<body>
-  <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-    <div class="container"><a class="navbar-brand" href="/index">Alfa</a><button data-toggle="collapse"
-        data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation"><a class="nav-link" href="/index">Home</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="/about">About us</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="/contact">Contact us</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="/sponsors">Sponsors</a></li>
-        </ul>
+  <body>
+    <nav class="navbar navbar-light navbar-expand-lg bg-white clean-navbar">
+      <div class="container">
+        <a class="navbar-brand text-monospace tada animated logo" href="/index"
+          >ΑΛΦΑ</a
+        ><button
+          data-toggle="collapse"
+          class="navbar-toggler"
+          data-target="#navcol-1"
+        >
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blogs">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about-us">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sponsors">Sponsors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact-us">Contact Us</a>
+            </li>
+            <% if(currentUser){ %>
+            <li class="nav-item">
+              <a
+                class="nav-link bg-info"
+                href="/admin-panel"
+                style="
+                  color: rgb(255, 255, 255);
+                  border-radius: 16px;
+                "
+                >ADMIN</a
+              >
+            </li>
+            <%}%>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </body>
+</html>

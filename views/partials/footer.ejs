@@ -1,33 +1,27 @@
-<hr>
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-lg-8 mx-auto">
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item"><a href="https://www.instagram.com/alfacycling_team/"> <span
-                                class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i
-                                    class="fa fa-instagram fa-stack-1x fa-inverse"></i></span></a></li>
-                    <li class="list-inline-item"><a href="https://www.facebook.com/groups/alfacycling.blogspot.gr/">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i
-                                    class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a></li>
-                    <li class="list-inline-item"><a href="mailto: info@alfacycling.com"> <span class="fa-stack fa-lg"><i
-                                    class="fa fa-circle fa-stack-2x"></i><i
-                                    class="fa fa-envelope-o fa-stack-1x fa-inverse"></i></span></a></li>
-                </ul>
-                <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Alfa <%= new Date().getFullYear();%></p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Scripts -->
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="https://www.instagram.com/alfacycling_team/"><i class="icon ion-social-instagram"></i></a><a href="mailto: info@alfacycling.com"><i
+                    class="icon ion-email"></i></a><a href="https://www.facebook.com/groups/alfacycling.blogspot.gr/"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="/index">Home</a></li>
+            <li class="list-inline-item"><a href="/gallery">Gallery</a></li>
+            <li class="list-inline-item"><a href="/blogs">Blog</a></li>
+            <li class="list-inline-item"><a href="/about-us">About us</a></li>
+            <li class="list-inline-item"><a href="/sponsors">Sponsors</a></li>
+            <li class="list-inline-item"><a href="/contact-us">Contact us</a></li>
+        </ul>
+        <% if(!currentUser){ %>
+        <p class="copyright"><a class="text-secondary" href="/auth/login">Login</a> || <a class="text-secondary" href="/auth/register">Register</a></p>
+        <%}else{%>
+        <p class="copyright"><a class="text-danger" href="/auth/logout">Logout</a></p>
+        <%}%>
+        <p class="copyright">alfacycling © <%= new Date().getFullYear();%></p>
+    </footer>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-<script src="/js/main.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="/javascripts/script.min.js"></script>
 </body>
 
 </html>
