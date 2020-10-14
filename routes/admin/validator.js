@@ -10,7 +10,7 @@ module.exports = {
         .withMessage('Must be a valid email!')
         .custom(async email => {
             const user = await findUserByEmail(email);
-            if (user[0] && email === user[0].email)
+            if (user[0]?.email)
                 throw new Error('Email already Exists');
         }),
     requireUsername: check('username')
@@ -19,7 +19,7 @@ module.exports = {
         .withMessage('Must be a valid username!')
         .custom(async username => {
             const user = await findUser(username);
-            if (user[0] && username === user[0].username)
+            if (user[0]?.username)
                 throw new Error('Username already Exists');
         }),
     requireUsernameExists: check('username')
@@ -28,7 +28,7 @@ module.exports = {
         .withMessage('Must be a valid username!')
         .custom(async username => {
             const user = await findUser(username);
-            if (!user[0] || !user[0].hasOwnProperty('username'))
+            if (!user[0]?.hasOwnProperty('username'))
                 throw new Error('Username does not Exists');
         }),
     requirePassword: check('password')
