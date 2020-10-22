@@ -1,27 +1,30 @@
-<div class="footer-basic">
-    <footer>
-        <div class="social"><a href="https://www.instagram.com/alfacycling_team/"><i class="icon ion-social-instagram"></i></a><a href="mailto: info@alfacycling.com"><i
-                    class="icon ion-email"></i></a><a href="https://www.facebook.com/groups/alfacycling.blogspot.gr/"><i class="icon ion-social-facebook"></i></a></div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="/index">Home</a></li>
-            <li class="list-inline-item"><a href="/gallery">Gallery</a></li>
-            <li class="list-inline-item"><a href="/blogs">Blog</a></li>
-            <li class="list-inline-item"><a href="/about-us">About us</a></li>
-            <li class="list-inline-item"><a href="/sponsors">Sponsors</a></li>
-            <li class="list-inline-item"><a href="/contact-us">Contact us</a></li>
-        </ul>
-        <% if(!currentUser){ %>
-        <p class="copyright"><a class="text-secondary" href="/auth/login">Login</a> || <a class="text-secondary" href="/auth/register">Register</a></p>
+<div class="footer">
+    <div class="column">
+        <div class="buttons is-centered">
+            <a class="has-text-primary-dark" href="https://www.facebook.com/groups/alfacycling.blogspot.gr/"><i
+                    class="m-2 fab fa-2x fa-facebook"></i></a>
+            <a class="has-text-primary-dark" href="https://www.instagram.com/alfacycling_team/"><i
+                    class="m-2 fab fa-2x fa-instagram"></i></a>
+            <a class="has-text-primary-dark" href="mailto: info@alfacycling.com"><i class="m-2 fas fa-2x fa-at"></i></a>
+        </div>
+    </div>
+
+    <div class="column has-text-centered">
+        <p class="menu-label">
+            A Project by Haris Razis
+            <br>
+            <% if(!currentUser){ %>
+        <p class="menu-label"><a class="has-text-dark" href="/auth/login">Login</a> || <a class="has-text-dark"
+                href="/auth/register">Register</a></p>
         <%}else{%>
-        <p class="copyright"><a class="text-danger" href="/auth/logout">Logout</a></p>
+        <p class="menu-label"><a class="has-text-danger" href="/auth/logout">Logout</a></p>
         <%}%>
-        <p class="copyright">alfacycling © <%= new Date().getFullYear();%></p>
-    </footer>
+            alfacycling © <%= new Date().getFullYear();%>
+        </p>
+    </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-<script src="/javascripts/script.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+<script src="/javascripts/main.js"></script>
 </body>
 
 </html>

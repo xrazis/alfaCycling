@@ -1,23 +1,15 @@
-<%- include("partials/header.ejs") %>
+<%- include('partials/html-top.ejs') %> <%- include('partials/nav.ejs') %>
 
-<header class="masthead" style="background-image: url(&quot;img/headers/error.jpg&quot;);">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 mx-auto">
-        <div class="site-heading">
-          <h1>Error!</h1><span class="subheading">Something went horribly wrong.</span>
-        </div>
-      </div>
+<section class="hero is-large is-danger">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-2">
+        Error! Something went horribly wrong.
+      </h1>
+      <h2 class="subtitle">
+        We could not find the page you are looking for.&nbsp;<i class="fas fa-sad-tear"></i> </h2>
     </div>
   </div>
-</header>
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 col-lg-8 mx-auto text-center">
-      <p>We could not find the page you are looking for.&nbsp;<i class="fas fa-sad-tear"></i></p>
-    </div>
-  </div>
-</div>
+</section>
 
-<%- include("partials/footer.ejs") %>
+<%- include('partials/footer.ejs') %>

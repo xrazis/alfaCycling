@@ -41,5 +41,12 @@ module.exports = {
         await db.query(sql, [email, username]);
 
         return;
+    },
+    showAllUsersFromDatabase: async () => {
+        const sql = 'SELECT * FROM users;';
+
+        const users = await db.query(sql);
+
+        return users;
     }
 };
