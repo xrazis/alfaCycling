@@ -1,45 +1,39 @@
-<%- include("../partials/header.ejs") %>
-
-<main class="page blog-post-list">
-  <section class="clean-block clean-blog-list dark">
-    <div class="container">
-      <div class="block-heading">
-        <h2 class="text-info">Blog Post List</h2>
-        <p>
-          See us in action, celebrating, suffering or having fun.<br /><br />
-        </p>
-      </div>
-      <% if(blogs) {%>
-      <div class="block-content">
+<%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
+<div class="container mt-6 has-text-centered">
+    <h2 class="title is-2 is-spaced">Blog posts </h2>
+    <h3 class="subtitle is-5 is-muted">Read our latest adventures</h3>
+    <div class="divider is-centered"></div>
+</div>
+<% if(blogs) {%>
+<div class="section is-large">
+    <div class="columns">
         <% blogs.forEach((blog, blogs) => { %>
-        <div class="clean-blog-post">
-          <div class="row">
-            <div class="col-lg-5">
-              <img class="rounded img-fluid" src="<%= blog.image %>" />
+        <div class="column is-one-fifth">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="<%= blog.image %>" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4"><%= blog.title %> </p>
+                            <p class="subtitle is-6">@<%= blog.posted_by %></p>
+                            <time datetime="2016-1-1"><%= blog.created.toDateString() %></time>
+                        </div>
+                    </div>
+                    <div class="content mb-2"><%- blog.body.substring(0,180) %>...</div>
+                    <a class="action" href="/blogs/<%=blog.id%>">
+                        <button class="button is-primary is-light">Read More</button>
+                    </a>
+                </div>
             </div>
-            <div class="col-lg-7">
-              <h3><%= blog.title %></h3>
-              <div class="info">
-                <span class="text-muted"
-                  ><%= blog.created.toDateString() %> by&nbsp;<a href="#"
-                    ><%= blog.posted_by %></a
-                  ></span
-                >
-              </div>
-              <p><%- blog.body.substring(0,200) %>...</p>
-              <a class="action" href="/blogs/<%=blog.id%>">
-                <button class="btn btn-outline-primary btn-sm" type="button">
-                  Read More
-                </button>
-              </a>
-            </div>
-          </div>
         </div>
         <% }) %>
-      </div>
-      <% } %> 
     </div>
-  </section>
-</main>
+</div>
+<% } %>
 
-<%- include("../partials/footer.ejs") %>
+
+<%- include('../partials/footer.ejs') %>

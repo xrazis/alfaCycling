@@ -1,140 +1,83 @@
-<%- include("../partials/header.ejs") %>
-
-<main class="page shopping-cart-page">
-  <section class="clean-block clean-cart dark">
-    <div class="container">
-      <div class="block-heading">
-        <h2 class="text-info">Admin Panel</h2>
-        <p></p>
-      </div>
-      <div class="content" style="padding-top: 10px">
-        <h2 class="text-info d-xl-flex justify-content-xl-center">Blogs</h2>
-        <hr />
-        <div class="row no-gutters">
-          <div class="col-md-12 col-lg-8">
-            <% if(blogs) {%> <% blogs.forEach((blog, blogs) => { %>
-            <div class="items">
-              <div class="product">
-                <div class="row justify-content-center align-items-center">
-                  <div class="col-md-3">
-                    <div class="product-image">
-                      <img
-                        class="img-fluid d-block mx-auto image"
-                        src="<%= blog.image %>"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-5 product-info">
-                    <a class="product-name" href="/blogs/<%=blog.id%>"
-                      ><%= blog.title %></a
-                    >
-                    <div class="product-specs">
-                      <div>
-                        <span>Posted:&nbsp;</span
-                        ><span class="value"
-                          ><%= blog.created.toDateString() %></span
-                        >
-                        <div>
-                          <span>Posted by:&nbsp;</span
-                          ><span class="value"><%= blog.posted_by %></span>
-                        </div>
-                      </div>
-                      <div>
-                        <span>Last edited:&nbsp;</span
-                        ><span class="value"
-                          ><%= blog.edited.toDateString() %></span
-                        >
-                      </div>
-                      <div>
-                        <span>Last edited by:&nbsp;</span
-                        ><span class="value"><%= blog.edited_by %></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-2 price" style="max-width: 20%">
-                    <div
-                      class="row row-cols-1 text-monospace text-center justify-content-center align-items-center"
-                      style="margin: 0"
-                    >
-                      <div class="col" style="margin: 0; margin-bottom: 20px">
-                        <a href="/blogs/<%=blog.id%>/edit">
-                          <button
-                            class="btn btn-warning"
-                            type="button"
-                            style="font-size: 15px"
-                          >
-                            EDIT
-                          </button>
-                        </a>
-                      </div>
-                      <div class="col">
-                        <form
-                          action="/blogs/<%=blog.id%>?_method=DELETE"
-                          method="POST"
-                        >
-                          <button
-                            class="btn btn-danger"
-                            type="submit"
-                            style="font-size: 15px"
-                          >
-                            DELETE
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% }) %> <% } %>
-          </div>
-          <div class="col-md-12 col-lg-4">
-            <div class="summary">
-              <h3>Summary</h3>
-              <h4>
-                <span class="text">Total Posts</span
-                ><span class="price"><%= blogs.length %></span>
-              </h4>
-              <a href="/blogs/new">
-                <button
-                  class="btn btn-success btn-block btn-lg text-monospace text-white"
-                  type="button"
-                >
-                  New Blog
-                </button>
-              </a>
-              <button
-                class="btn btn-danger btn-block btn-lg text-monospace text-dark disabled"
-                type="button"
-              >
-                Delete All
-              </button>
-            </div>
-          </div>
+<%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
+<section class="hero is-medium is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="is-size-1">Admin Panel</h1>
+            <h3 class="is-size-3">Welcome <%= currentUser %></h3>
+            <h4 class="is-size-5">Be carefull, actions are irreversible!</h4>
         </div>
-        <hr />
-        <!-- <nav class="d-xl-flex justify-content-xl-center">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous"
-                ><span aria-hidden="true">«</span></a
-              >
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next"
-                ><span aria-hidden="true">»</span></a
-              >
-            </li>
-          </ul>
-        </nav> -->
-      </div>
     </div>
-  </section>
+    <div class="hero-foot">
+        <div class="buttons">
+            <div class="container mb-5">
+                <a href="/blogs/new"><button class="button is-success is-medium">New Blog&ensp;<i
+                            class="far fa-plus-square"></i></button></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section is-medium">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-three-fifths">
+                <% if(blogs) {%> <% blogs.forEach((blog, blogs) => { %>
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-128x128">
+                            <img src="<%= blog.image %>">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <nav class="level">
+                            <div class="content level-right">
+                                <p>
+                                    <a href="/blogs/<%=blog.id%>"><strong><%= blog.title %></strong></a>
+                                    <br>
+                                    <small>Created: </small>
+                                    <small>@<%= blog.posted_by %></small> on
+                                    <small><%= blog.created.toDateString() %></small>
+                                    <br>
+                                    <small>Edited: </small>
+                                    <small>@<%= blog.edited_by %></small> on
+                                    <small><%= blog.edited.toDateString() %></small>
+                                </p>
+                            </div>
+                            <div class="level-left">
+                                <a class="level-item" href="/blogs/<%=blog.id%>/edit">
+                                    <button class="button is-warning">Edit&ensp;<i class="fas fa-hammer"></i></button>
+                                </a>
+                                <form class="level-item" action="/blogs/<%=blog.id%>?_method=DELETE" method="POST">
+                                    <button class="button is-danger">Delete&ensp;<i class="fas fa-skull"></i></button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+                <% }) %> <% } %>
+            </div>
+            <div class="column is-one-fifths"></div>
+            <div class="column is-one-fifths">
+                <article class="panel is-info">
+                    <p class="panel-heading">
+                        Stats
+                    </p>
+                    <a class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-book has-text-info" aria-hidden="true"></i>
+                        </span>
+                        Total Posts: <%= blogs.length %>
+                    </a>
+                    <a class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-book has-text-info" aria-hidden="true"></i>
+                        </span>
+                        Total Users: <%= users.length %>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
 
-  <%- include("../partials/footer.ejs") %>
-</main>
+<%- include('../partials/footer.ejs') %>

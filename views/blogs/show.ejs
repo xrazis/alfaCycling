@@ -1,26 +1,26 @@
-<%- include("../partials/header.ejs") %>
+<%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
 
-<main class="page blog-post">
-  <section class="clean-block clean-post dark">
-    <div class="container">
-      <div class="block-content">
-        <div
-          class="post-image"
-          style="background-image: url('<%= blog[0].image %>')"
-        ></div>
-        <div class="post-body">
-          <h3><%= blog[0].title %></h3>
-          <div class="post-info">
-            <span>By <%= blog[0].posted_by %></span
-            ><span><%= blog[0].created.toDateString() %></span>
-          </div>
-          <h4><%= blog[0].subtitle %></h4>
-
-          <p><%-blog[0].body %></p>
+<section class="hero is-fullheight-with-navbar is-primary" style="background-image:url('<%= blog[0].image %>');"
+    id="blog-hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-size-1">
+                <%= blog[0].title %>
+            </h1>
+            <h2 class="subtitle is-size-3">
+                <%= blog[0].subtitle %>
+            </h2>
+            <h3 class="is-size-4">
+                <span>By <%= blog[0].posted_by %></span> <span><%= blog[0].created.toDateString() %></span>
+            </h3>
         </div>
-      </div>
     </div>
-  </section>
-</main>
+</section>
 
-<%- include("../partials/footer.ejs") %>
+<div class="container mt-5">
+    <div class="is-size-4 has-text-centered pt-5">
+        <%-blog[0].body %>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

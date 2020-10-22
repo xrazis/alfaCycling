@@ -1,25 +1,64 @@
-    <%- include("../partials/header.ejs") %>
+<%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
 
-  <script src="https://cdn.tiny.cloud/1/<%-tiny_api%>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({selector:'textarea'});</script>
+<script src="https://cdn.tiny.cloud/1/<%-tiny_api%>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({ selector: 'textarea' });</script>
 
-    <main class="page contact-us-page">
-        <section class="clean-block clean-form dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">New Blog Post</h2>
-                    <p>Create a new blog post. Refer to docs.</p>
-                </div>
-                <form style="max-width: 80%;" method="POST" action="/blogs" enctype="multipart/form-data">
-                    <div class="form-group"><label>Blog Title</label><input class="form-control" type="text" name="title"></div>
-                    <div class="form-group"><label>Subtitle</label><input class="form-control" type="text" name="subtitle"></div>
-                    <div class="form-group"><label>Body</label><textarea class="form-control form-control-lg" name="body" style="height: 15rem;"></textarea></div>
-                    <div class="form-group"><label>Header Photo</label><small style="margin-left: 10px;">Choose the Blog header photo</small><input class="float-right" type="file" name="image"></div>
-                    <!-- <div class="form-group"><label>Blog Photos</label><small style="margin-left: 10px;">Choose the Blog post photos</small><input class="float-right" type="file" multiple></div> -->
-                    <div class="form-group"><button class="btn btn-success btn-block" type="submit">Create</button></div>
+<section class="section is-medium">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <form method="POST">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input is-medium" type="username" name="title" placeholder="Blog Title">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input is-medium" type="email" name="subtitle" placeholder="Subtitle">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <textarea class="textarea" placeholder="Body" rows="10"></textarea>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <div class="file has-name is-fullwidth is-primary">
+                                <label class="file-label">
+                                    <input class="file-input" type="file" name="image">
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                            Choose a header image
+                                        </span>
+                                    </span>
+                                    <span class="file-name">
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control">
+                                <button class="button is-success" type="submit">
+                                    Create
+                                </button>
+                            </p>
+                        </div>
+                    </div>
                 </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
+</section>
 
-    <%- include("../partials/footer.ejs") %>
+<%- include('../partials/footer.ejs') %>

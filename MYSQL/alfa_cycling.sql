@@ -1,6 +1,5 @@
 CREATE DATABASE IF NOT EXISTS alfa_cycling;
 USE alfa_cycling;
-# DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS blogs;
 DROP TABLE IF EXISTS users;
 

@@ -1,66 +1,68 @@
-<%- include("../partials/header.ejs") %>
+<%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
 
-<main class="page registration-page">
-  <section class="clean-block clean-form dark">
+<section class="section is-medium">
     <div class="container">
-      <div class="block-heading">
-        <h2 class="text-info">Registration</h2>
-      </div>
-      <form method="POST">
-        <% if (error){ %>
-        <div class="alert alert-danger" role="alert">
-          <%= error %>
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <form method="POST">
+                    <% if (error){ %>
+                    <div class="notification is-danger">
+                        <%= error %>
+                    </div>
+                    <% } %>
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input is-medium" type="username" name="username" placeholder="Username">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input is-medium" type="email" name="email" placeholder="Email">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input is-medium" type="password" name="password" placeholder="Password">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control has-icons-left">
+                                <input class="input is-medium" type="password" placeholder="Password repeat"
+                                    name="password_repeat">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input is-medium" type="text" name="admin_code" placeholder="Admin Code">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-cog"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="column is-12">
+                            <p class="control">
+                                <button class="button is-success" type="submit">
+                                    Register
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <% } %>
-        <div class="form-group">
-          <label for="name">Username</label
-          ><input
-            class="form-control item"
-            type="text"
-            id="name"
-            name="username"
-          />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label
-          ><input
-            class="form-control item"
-            type="email"
-            id="email"
-            name="email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label
-          ><input
-            class="form-control item"
-            type="password"
-            id="password"
-            name="password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password repeat</label
-          ><input
-            class="form-control item"
-            type="password"
-            id="password-1"
-            name="password_repeat"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Admin Code</label
-          ><input
-            class="form-control item"
-            type="password"
-            id="password-2"
-            name="admin_code"
-          />
-        </div>
-        <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-      </form>
     </div>
-  </section>
-</main>
-
-<%- include("../partials/footer.ejs") %>
+</section>
+<%- include('../partials/footer.ejs') %>
