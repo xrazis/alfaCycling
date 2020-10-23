@@ -1,7 +1,7 @@
 const mysql = require('mysql'),
     util = require('util');
 
-const { db_host, db_user, db_password, db_port, db_database } = require("./creds");
+const { db_host, db_user, db_password, db_port, db_database } = require("../config/keys");
 
 const config = {
     host: db_host,
