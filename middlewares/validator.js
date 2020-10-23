@@ -1,6 +1,6 @@
 const { check } = require('express-validator'),
-    creds = require("../../config/keys");
-const { findUser, findUserByEmail } = require('../../actions/db_actions_users');
+    creds = require("../config/keys");
+const { findUser, findUserByEmail } = require('../actions/db_actions_users');
 
 module.exports = {
     requireEmail: check('email')
