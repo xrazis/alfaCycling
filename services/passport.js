@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
-const { insertUser, findUser, findUserById } = require('./dbActions');
+const { insertUser, findUser, findUserById } = require('../actions/db_actions_users');
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
