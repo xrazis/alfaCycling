@@ -1,4 +1,4 @@
-const db = require('../../config/dbConn'),
+const db = require('../connections/db_conn'),
     crypto = require('crypto');
 
 module.exports = {
