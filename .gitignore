@@ -1,7 +1,3 @@
-config/creds.js
-
-public/images/uploads/
-
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
@@ -117,3 +113,5 @@ dist
 .vscode-test
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+
+config/dev.js

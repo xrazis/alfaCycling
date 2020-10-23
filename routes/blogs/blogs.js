@@ -1,11 +1,11 @@
 const express = require('express'),
   router = express.Router();
 
-const creds = require('../../config/creds');
-const upload = require('./imgActions');
+const creds = require('../../config/keys');
+const upload = require('../../actions/img_actions');
 
-const { requireAuth } = require('../admin/middlewares');
-const { insertToDatabase, updateDatabase, deleteFromDatabase, showAllFromDatabase, getOneFromDatabase } = require('./dbActions');
+const { requireAuth } = require('../../middlewares/middlewares');
+const { insertToDatabase, updateDatabase, deleteFromDatabase, showAllFromDatabase, getOneFromDatabase } = require('../../actions/db_actions_blogs');
 
 router.get('/blogs', async (req, res) => {
   res.render('blogs/blogs', {

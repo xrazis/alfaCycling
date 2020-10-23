@@ -1,10 +1,10 @@
 const express = require('express'),
   router = express.Router();
 
-const creds = require('../config/creds');
-const transporter = require('../config/mailerConn');
+const creds = require('../config/keys');
+const transporter = require('../connections/mailer_conn');
 
-const { showAllFromDatabase } = require('./blogs/dbActions');
+const { showAllFromDatabase } = require('../actions/db_actions_blogs');
 
 router.post('/index', (req, res) => {
   const { email, subject, name, message } = req.body;

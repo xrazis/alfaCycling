@@ -2,15 +2,16 @@ const bodyParser = require('body-parser'),
   express = require('express'),
   app = express(),
   methodOverride = require('method-override'),
-  expressSanitizer = require('express-sanitizer');
+  expressSanitizer = require('express-sanitizer'),
+  createError = require('http-errors');
 
 const indexRoute = require('./routes/index'),
   blogsRoute = require('./routes/blogs/blogs'),
   authRoute = require('./routes/admin/auth'),
   adminRoute = require('./routes/admin/admin');
 
-const creds = require('./config/creds'),
-  passport = require('./routes/admin/passport');
+const creds = require('./config/keys'),
+  passport = require('./services/passport');
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -43,14 +44,16 @@ app.use(blogsRoute);
 app.use(authRoute);
 app.use(adminRoute);
 
-app.use((req, res, next) => {
-  res.status(404).render('error.ejs');
-})
+app.use(function (req, res, next) {
+  next(createError(404));
+});
 
-//  live - plesk
-// const http = require('http');
-// http.createServer(app).listen(process.env.PORT);
+app.use(function (err, req, res, next) {
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-//  local
-app.listen(3000, '127.0.0.1');
-console.log('Server is up and running!');
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

@@ -1,69 +1,71 @@
-<nav class="navbar is-transparent container">
-    <div class="navbar-brand">
-        <a class="navbar-item has-text-primary" href="/index">
-            <i class="rotated fas fa-biking"></i><span class="is-size-4">&nbsp;AΛΦΑ</span>
-        </a>
-        <div id="nav-toggle" class="navbar-burger burger" data-target="nav-menu"
-            onclick="document.querySelector('#nav-menu').classList.toggle('is-active');">
-            <span></span>
-            <span></span>
-            <span></span>
+<nav class="navbar is-dark">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-white" href="/index">
+                <i class="rotated fas fa-biking"></i><span class="is-size-4">&nbsp;AΛΦΑ</span>
+            </a>
+            <div id="nav-toggle" class="navbar-burger burger" data-target="nav-menu"
+                onclick="document.querySelector('#nav-menu').classList.toggle('is-active');">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="nav-menu" class="navbar-menu p-1">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/index">
+                    Home
+                </a>
+                <a class="navbar-item" href="/index#about-us">
+                    About Us
+                </a>
+                <a class="navbar-item" href="/index#sponsors">
+                    Sponsors
+                </a>
+                <a class="navbar-item" href="/index#contact-us">
+                    Contact Us
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <a class="navbar-item" href="/blogs">
+                    Blog
+                </a>
+                <a class="navbar-item is-hidden" href="/gallery">
+                    Gallery
+                </a>
+                <% if(currentUser){ %>
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="bd-tw-button button" href="/admin-panel"><span class="icon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                <span>
+                                    Admin
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <%}else{%>
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="bd-tw-button button" href="https://github.com/xrazis/alfacycling.com">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>
+                                    Source
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <%}%>            
         </div>
     </div>
-
-    <div id="nav-menu" class="navbar-menu p-1">
-        <div class="navbar-start">
-            <a class="navbar-item" href="/index">
-                Home
-            </a>
-            <a class="navbar-item" href="/index#about-us">
-                About Us
-            </a>
-            <a class="navbar-item" href="/index#sponsors">
-                Sponsors
-            </a>
-            <a class="navbar-item" href="/index#contact-us">
-                Contact Us
-            </a>
-        </div>
-
-        <div class="navbar-end">
-            <a class="navbar-item" href="/blogs">
-                Blog
-            </a>
-            <a class="navbar-item is-hidden" href="/gallery">
-                Gallery
-            </a>
-            <% if(currentUser){ %>
-            <div class="navbar-item">
-                <div class="field is-grouped">
-                    <p class="control">
-                        <a class="bd-tw-button button" href="/admin-panel"><span class="icon">
-                                <i class="fa fa-cog"></i>
-                            </span>
-                            <span>
-                                Admin
-                            </span>
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <%}else{%>
-            <div class="navbar-item">
-                <div class="field is-grouped">
-                    <p class="control">
-                        <a class="bd-tw-button button" href="https://github.com/xrazis/alfacycling.com">
-                            <span class="icon">
-                                <i class="fab fa-github"></i>
-                            </span>
-                            <span>
-                                Source
-                            </span>
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <%}%>            
-        </div>
     </div>
 </nav>

@@ -2,10 +2,10 @@ const express = require('express'),
     router = express.Router(),
     passport = require('passport');
 
-const { handleErrors, handleErrorsPassport } = require('./middlewares');
-const { insertUserEmail } = require('./dbActions');
-const { getError } = require('../../views/admin/helper.js');
 const { requireEmail, requireUsername, requireUsernameExists, requirePassword, requirePasswordConfirmation, requireAdminCode } = require('./validator');
+const { handleErrors, handleErrorsPassport } = require('../../middlewares/middlewares');
+const { insertUserEmail } = require('../../actions/db_actions_users');
+const { getError } = require('../../views/admin/helper.js');
 
 router.get('/auth/register', (req, res) => {
     res.render('admin/register', {
