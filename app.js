@@ -1,35 +1,35 @@
-const bodyParser = require('body-parser'),
-  express = require('express'),
-  app = express(),
+const expressSanitizer = require('express-sanitizer'),
   methodOverride = require('method-override'),
-  expressSanitizer = require('express-sanitizer'),
-  createError = require('http-errors');
+  bodyParser = require('body-parser'),
+  createError = require('http-errors'),
+  express = require('express'),
+  app = express();
 
 const indexRoute = require('./routes/index'),
   blogsRoute = require('./routes/blogs/blogs'),
   authRoute = require('./routes/admin/auth'),
   adminRoute = require('./routes/admin/admin');
 
-const creds = require('./config/keys'),
+const keys = require('./config/keys'),
   passport = require('./services/passport');
 
 app.set('view engine', 'ejs');
+
 app.use(express.static(__dirname + '/public'));
+
 app.use(
   bodyParser.urlencoded({
     extended: true
-  })
-);
+  }));
+
 app.use(expressSanitizer());
 app.use(methodOverride('_method'));
 
 app.use(
-  require('express-session')({
-    secret: creds.session_secret,
-    resave: false,
-    saveUninitialized: true
-  })
-);
+  require('cookie-session')({
+    keys: [keys.session_secret],
+    maxAge: 30 * 24 * 60 * 60 * 1000
+  }));
 
 app.use(passport.initialize());
 app.use(passport.session());
