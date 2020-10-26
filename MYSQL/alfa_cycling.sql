@@ -5,10 +5,10 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE IF NOT EXISTS blogs
 (
-    id        varchar(10) NOT NULL,
-    title     varchar(254) NOT NULL,
-    subtitle  varchar(254) NOT NULL,
-    image     varchar(254) NOT NULL,
+    id        varchar(10),
+    title     varchar(254),
+    subtitle  varchar(254),
+    image     varchar(254),
     body      text,
     created   datetime DEFAULT CURRENT_TIMESTAMP,
     edited    datetime DEFAULT CURRENT_TIMESTAMP,
@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS blogs
 
 CREATE TABLE IF NOT EXISTS users
 (
-    id        varchar(10) NOT NULL,
+    id        varchar(10),
     email    varchar(48),
-    username varchar(24)  NOT NULL,
-    password varchar(254) NOT NULL,
+    username varchar(24),
+    password varchar(254),
     role     varchar(24) DEFAULT 'user',
     PRIMARY KEY (id)
 ) ENGINE = InnoDB
