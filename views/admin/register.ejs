@@ -4,6 +4,7 @@
     <div class="container">
         <div class="columns">
             <div class="column is-6 is-offset-3">
+                <h1 class="is-size-1">Register</h1>
                 <form method="POST">
                     <% if (error){ %>
                     <div class="notification is-danger">
@@ -46,7 +47,8 @@
                         </div>
                         <div class="column is-12">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-medium" type="text" name="admin_code" placeholder="Admin Code">
+                                <input class="input is-medium" type="password" name="admin_code"
+                                    placeholder="Admin Code">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-cog"></i>
                                 </span>
