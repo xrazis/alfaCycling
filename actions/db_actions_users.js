@@ -12,6 +12,15 @@ module.exports = {
 
         return;
     },
+    insertUserEmail: async (req) => {
+        const { email, username } = req.body;
+
+        const sql = 'UPDATE users SET email = ? WHERE username = ?;';
+
+        await db.query(sql, [email, username]);
+
+        return;
+    },
     findUser: async (username) => {
         const sql = 'SELECT * FROM users WHERE username = ?';
 
@@ -32,15 +41,6 @@ module.exports = {
         const user = await db.query(sql, email);
 
         return user;
-    },
-    insertUserEmail: async (req) => {
-        const { email, username } = req.body;
-
-        const sql = 'UPDATE users SET email = ? WHERE username = ?;';
-
-        await db.query(sql, [email, username]);
-
-        return;
     },
     showAllUsersFromDatabase: async () => {
         const sql = 'SELECT * FROM users;';
