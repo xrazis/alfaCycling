@@ -1,7 +1,7 @@
 const expressSanitizer = require('express-sanitizer'),
   methodOverride = require('method-override'),
-  bodyParser = require('body-parser'),
   createError = require('http-errors'),
+  bodyParser = require('body-parser'),
   express = require('express'),
   app = express();
 

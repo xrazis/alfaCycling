@@ -4,6 +4,14 @@ const chalk = require('chalk');
 
 let page;
 
+const actions = [
+    {
+        method: 'post',
+        path: 'http://localhost:3000/blogs',
+        data: { title: 'My title', subtitle: 'My subtitle', body: 'My body' }
+    }]
+    ;
+
 before(async () => {
     page = await Page.build();
     await page.goto('http://localhost:3000');
@@ -13,31 +21,7 @@ after(async () => {
     await page.close();
 });
 
-describe(chalk.magenta('When user is not logged in'), async () => {
-    it('Can see login,', async () => {
-        await page.goto('http://localhost:3000/auth/login');
-
-        const login = await page.getContentsOf('h1');
-
-        assert.equal(login, 'Login');
-    });
-
-    it('Can see register,', async () => {
-        await page.goto('http://localhost:3000/auth/register');
-
-        const register = await page.getContentsOf('h1');
-
-        assert.equal(register, 'Register');
-    });
-
-    it('Can not see admin panel,', async () => {
-        await page.goto('http://localhost:3000/admin-panel');
-
-        const login = await page.getContentsOf('h1.is-size-1');
-
-        assert.equal(login, 'Login');
-    });
-
+describe(chalk.magenta('Blog routes ~> when user is not logged in'), async () => {
     it('Can not see new page,', async () => {
         await page.goto('http://localhost:3000/blogs/new');
 
@@ -55,23 +39,17 @@ describe(chalk.magenta('When user is not logged in'), async () => {
 
         assert.equal(login, 'Login');
     });
+
+    it('Can not post /blogs,', async () => {
+        const path = await page.execRequests(actions);
+
+        assert.equal(path, '/auth/login');
+    });
 });
 
-describe(chalk.cyan('When user is logged in'), () => {
+describe(chalk.cyan('Blog routes ~> when user is logged in'), () => {
     beforeEach(async () => {
         await page.login();
-    });
-
-    it('Can see logout,', async () => {
-        const logout = await page.getContentsOf('a[href="/auth/logout"]');
-
-        assert.equal(logout, 'Logout');
-    });
-
-    it('Can see admin panel,', async () => {
-        const adminPanel = await page.getContentsOf('h1.is-size-1');
-
-        assert.equal(adminPanel, 'Admin Panel');
     });
 
     it('Can see new page,', async () => {
@@ -89,13 +67,5 @@ describe(chalk.cyan('When user is logged in'), () => {
         const edit = await page.getContentsOf('h1.is-size-1');
 
         assert.equal(edit, 'Edit blog');
-    });
-
-    it('Can logout', async () => {
-        await page.click('a[href="/auth/logout"]');
-
-        const login = await page.getContentsOf('a[href="/auth/login"]');
-
-        assert.equal(login, 'Login');
     });
 });
