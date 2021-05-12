@@ -29,7 +29,7 @@
     "mysql": "^2.18.1",
     "node": "^14.13.0",
     "node-addon-api": "^3.0.2",
-    "nodemailer": "^6.4.13",
+    "nodemailer": "^6.4.16",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "puppeteer": "^5.3.1",
