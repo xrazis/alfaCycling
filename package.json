@@ -1,7 +1,7 @@
 {
-  "name": "alfa",
+  "name": "alfacycling.com",
   "version": "1.0.0",
-  "description": "alfacycling Website",
+  "description": "Alfa cycling team website",
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
