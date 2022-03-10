@@ -1,7 +1,7 @@
 <%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
 
 <section class="hero is-fullheight-with-navbar is-primary" style="background-image:url('<%= blog[0].image %>');"
-    id="blog-hero">
+         id="blog-hero">
     <div class="hero-body">
         <div class="container">
             <h1 class="title is-size-1">
@@ -19,7 +19,7 @@
 
 <div class="container mt-5">
     <div class="is-size-4 has-text-centered pt-5">
-        <%-blog[0].body %>
+        <%- blog[0].body %>
     </div>
 </div>
 

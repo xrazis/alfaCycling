@@ -5,6 +5,10 @@ const userFactory = require('../factories/userFactory');
 const sessionFactory = require('../factories/sessionFactory');
 
 class mPage {
+    constructor(page) {
+        this.page = page;
+    }
+
     static async build() {
         const browser = await puppeteer.launch();
 
@@ -18,16 +22,12 @@ class mPage {
         });
     }
 
-    constructor(page) {
-        this.page = page;
-    }
-
     async login() {
         const user = await userFactory();
-        const { session, sig } = sessionFactory(user);
+        const {session, sig} = sessionFactory(user);
 
-        await this.page.setCookie({ name: 'express:sess', value: session });
-        await this.page.setCookie({ name: 'express:sess.sig', value: sig });
+        await this.page.setCookie({name: 'express:sess', value: session});
+        await this.page.setCookie({name: 'express:sess.sig', value: sig});
         await this.page.goto('http://localhost:3000/admin-panel');
         await this.page.waitForSelector('a[href="/auth/logout"]');
     }
@@ -51,9 +51,9 @@ class mPage {
     }
 
     execRequests(actions) {
-        return Promise.all(actions.map(({ method, path, data }) => {
-            return this[method](path, data);
-        })
+        return Promise.all(actions.map(({method, path, data}) => {
+                return this[method](path, data);
+            })
         );
     }
 }

@@ -15,4 +15,3 @@ services:
     restart: always
     env_file:
       - mysql-variables.env
-

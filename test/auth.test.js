@@ -1,5 +1,5 @@
 const Page = require('./helpers/page.js');
-const { assert, expect } = require('chai');
+const {assert, expect} = require('chai');
 const chalk = require('chalk');
 
 let page;

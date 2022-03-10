@@ -1,6 +1,6 @@
-const { check } = require('express-validator'),
-    creds = require("../config/keys");
-const { findUser, findUserByEmail } = require('../actions/db_actions_users');
+const {check} = require('express-validator'),
+    creds = require('../config/keys');
+const {findUser, findUserByEmail} = require('../actions/db_actions_users');
 
 module.exports = {
     requireEmail: check('email')
@@ -15,7 +15,7 @@ module.exports = {
         }),
     requireUsername: check('username')
         .trim()
-        .isLength({ min: 4, max: 20 })
+        .isLength({min: 4, max: 20})
         .withMessage('Must be a valid username!')
         .custom(async username => {
             const user = await findUser(username);
@@ -24,7 +24,7 @@ module.exports = {
         }),
     requireUsernameExists: check('username')
         .trim()
-        .isLength({ min: 4, max: 20 })
+        .isLength({min: 4, max: 20})
         .withMessage('Must be a valid username!')
         .custom(async username => {
             const user = await findUser(username);
@@ -33,19 +33,19 @@ module.exports = {
         }),
     requirePassword: check('password')
         .trim()
-        .isLength({ min: 4, max: 20 })
+        .isLength({min: 4, max: 20})
         .withMessage('Must be a valid password!'),
     requirePasswordConfirmation: check('password_repeat')
         .trim()
-        .isLength({ min: 4, max: 20 })
+        .isLength({min: 4, max: 20})
         .withMessage('Passwords!')
-        .custom(async (password_repeat, { req }) => {
+        .custom(async (password_repeat, {req}) => {
             if (password_repeat !== req.body.password)
                 throw new Error('Passwords dont match!');
         }),
     requireAdminCode: check('admin_code')
         .trim()
-        .isLength({ min: 4, max: 20 })
+        .isLength({min: 4, max: 20})
         .withMessage('Must be a valid admin code!')
         .custom(async admin_code => {
             if (admin_code !== creds.admin_code)

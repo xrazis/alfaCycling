@@ -4,10 +4,10 @@
     <div class="hero-body">
         <div class="container">
             <div class="columns is-vcentered">
-                <% if(blogs) {%> <% blogs.forEach((blog, blogs) => { %>
+                <% if(blogs) { %> <% blogs.forEach((blog, blogs) => { %>
                 <div class="column">
                     <figure class="image is-fullwidth">
-                        <img class="rounded" src="<%=blog.image %>" alt="" />
+                        <img class="rounded" src="<%= blog.image %>" alt=""/>
                     </figure>
                 </div>
                 <div class="column is-5 is-offset-1 landing-caption">
@@ -23,11 +23,12 @@
                     </div>
                     <h1 class="is-size-1"><%= blog.title %></h1>
                     <p class="is-size-4"><%= blog.subtitle %></p>
-                    <a href="/blogs/<%=blog.id%>">
+                    <a href="/blogs/<%= blog.id %>">
                         <button class="button is-rounded is-primary mt-2">Read</button>
                     </a>
                 </div>
-                <% }) %> <% } %>
+                <% }) %>
+                <% } %>
             </div>
         </div>
     </div>
@@ -37,22 +38,22 @@
             <div class="tabs is-centered">
                 <ul>
                     <li>
-                        <a><img class="partner-logo" src="/images/sponsors_b&w/alpescapital_logo.png    " /></a>
+                        <a><img class="partner-logo" src="/images/sponsors_b&w/alpescapital_logo.png    "/></a>
                     </li>
                     <li>
-                        <a><img class="partner-logo" src="/images/sponsors_b&w/cookworld_logo.png" /></a>
+                        <a><img class="partner-logo" src="/images/sponsors_b&w/cookworld_logo.png"/></a>
                     </li>
                     <li>
-                        <a><img class="partner-logo" src="/images/sponsors_b&w/drugstore_logo.png" /></a>
+                        <a><img class="partner-logo" src="/images/sponsors_b&w/drugstore_logo.png"/></a>
                     </li>
                     <li>
-                        <a><img class="partner-logo" src="/images/sponsors_b&w/fgi_logo.png" /></a>
+                        <a><img class="partner-logo" src="/images/sponsors_b&w/fgi_logo.png"/></a>
                     </li>
                     <li>
-                        <a><img class="partner-logo" src="/images/sponsors_b&w/physiogold_logo.png" /></a>
+                        <a><img class="partner-logo" src="/images/sponsors_b&w/physiogold_logo.png"/></a>
                     </li>
                     <li>
-                        <a><img class="partner-logo" src="/images/sponsors_b&w/whitebox_logo.png" /></a>
+                        <a><img class="partner-logo" src="/images/sponsors_b&w/whitebox_logo.png"/></a>
                     </li>
                 </ul>
             </div>
@@ -70,7 +71,7 @@
             Alfa cycling is an amateur team with professional dedication and approach
             to the sport. Consistent of 105 athletes across all categories, from Elite
             Men to Masters,from road racing, triathlon, to mountain biking,we try to
-            participate in as many races as possible both in Greece and abroad.<br />Goal
+            participate in as many races as possible both in Greece and abroad.<br/>Goal
             of the team is to provide athletes with opportunities to develop as
             riders, while having fun at the same time.
         </p>
@@ -83,7 +84,7 @@
         <p class="subtitle is-4 has-text-light">
             Sponsor representation comes natural as we force alliances with companies
             which trust our process and team ethics. If you find our project
-            interesting why not join the fun?<br />
+            interesting why not join the fun?<br/>
         </p>
     </div>
 
@@ -167,7 +168,7 @@
                         <div class="card-image is-flex">
                             <figure class="image is-flex is-128x128">
                                 <img class="is-vcentered" src="/images/sponsors/drugstore_logo.svg"
-                                    alt="Placeholder image">
+                                     alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="content">
@@ -216,7 +217,7 @@
                         <div class="card-image is-flex">
                             <figure class="image is-flex is-128x128">
                                 <img class="is-vcentered" src="/images/sponsors/cookworld_logo.svg"
-                                    alt="Placeholder image">
+                                     alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="content">
@@ -238,7 +239,7 @@
                         <div class="card-image is-flex">
                             <figure class="image is-flex is-128x128">
                                 <img class="is-vcentered" src="/images/sponsors/petrolko_logo.svg"
-                                    alt="Placeholder image">
+                                     alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="content">
@@ -261,7 +262,7 @@
                         <div class="card-image is-flex">
                             <figure class="image is-flex is-128x128">
                                 <img class="is-vcentered" src="/images/sponsors/whitebox_logo.svg"
-                                    alt="Placeholder image">
+                                     alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="content">
@@ -343,7 +344,8 @@
                             <div class="column is-12">
                                 <div class="form-footer has-text-right mt-10">
                                     <button class="button cta is-large primary-btn form-button raised is-clear">Send
-                                        Message</button>
+                                        Message
+                                    </button>
                                 </div>
                             </div>
                         </div>

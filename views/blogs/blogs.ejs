@@ -4,35 +4,35 @@
     <h3 class="subtitle is-5 is-muted">Read our latest adventures</h3>
     <div class="divider is-centered"></div>
 </div>
-<% if(blogs) {%>
-<div class="section is-large">
-    <div class="columns">
-        <% blogs.forEach((blog, blogs) => { %>
-        <div class="column is-one-quarter">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src="<%= blog.image %>" alt="Placeholder image">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            <p class="title is-4"><%= blog.title %> </p>
-                            <p class="subtitle is-6">@<%= blog.posted_by %></p>
-                            <time datetime="2016-1-1"><%= blog.created.toDateString() %></time>
+<% if(blogs) { %>
+    <div class="section is-large">
+        <div class="columns">
+            <% blogs.forEach((blog, blogs) => { %>
+                <div class="column is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="<%= blog.image %>" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4"><%= blog.title %> </p>
+                                    <p class="subtitle is-6">@<%= blog.posted_by %></p>
+                                    <time datetime="2016-1-1"><%= blog.created.toDateString() %></time>
+                                </div>
+                            </div>
+                            <div class="content mb-2"><%- blog.body.substring(0, 180) %>...</div>
+                            <a class="action" href="/blogs/<%= blog.id %>">
+                                <button class="button is-primary is-light">Read More</button>
+                            </a>
                         </div>
                     </div>
-                    <div class="content mb-2"><%- blog.body.substring(0,180) %>...</div>
-                    <a class="action" href="/blogs/<%=blog.id%>">
-                        <button class="button is-primary is-light">Read More</button>
-                    </a>
                 </div>
-            </div>
+            <% }) %>
         </div>
-        <% }) %>
     </div>
-</div>
 <% } %>
 
 

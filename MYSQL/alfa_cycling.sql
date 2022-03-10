@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS blogs
 
 CREATE TABLE IF NOT EXISTS users
 (
-    id        varchar(10),
+    id       varchar(10),
     email    varchar(48),
     username varchar(24),
     password varchar(254),

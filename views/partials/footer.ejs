@@ -2,9 +2,9 @@
     <div class="column">
         <div class="buttons is-centered">
             <a class="has-text-primary-dark" href="https://www.facebook.com/groups/alfacycling.blogspot.gr/"><i
-                    class="m-2 fab fa-2x fa-facebook"></i></a>
+                        class="m-2 fab fa-2x fa-facebook"></i></a>
             <a class="has-text-primary-dark" href="https://www.instagram.com/alfacycling_team/"><i
-                    class="m-2 fab fa-2x fa-instagram"></i></a>
+                        class="m-2 fab fa-2x fa-instagram"></i></a>
             <a class="has-text-primary-dark" href="mailto: info@alfacycling.com"><i class="m-2 fas fa-2x fa-at"></i></a>
         </div>
     </div>
@@ -15,11 +15,12 @@
             <br>
             <% if(!currentUser){ %>
         <p class="menu-label"><a class="has-text-dark" href="/auth/login">Login</a> || <a class="has-text-dark"
-                href="/auth/register">Register</a></p>
-        <%}else{%>
-        <p class="menu-label"><a class="has-text-danger" href="/auth/logout">Logout</a></p>
-        <%}%>
-            alfacycling © <%= new Date().getFullYear();%>
+                                                                                          href="/auth/register">Register</a>
+        </p>
+        <% }else{ %>
+            <p class="menu-label"><a class="has-text-danger" href="/auth/logout">Logout</a></p>
+        <% } %>
+        alfacycling © <%= new Date().getFullYear(); %>
         </p>
     </div>
 </div>

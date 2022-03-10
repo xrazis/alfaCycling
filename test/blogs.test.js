@@ -1,5 +1,5 @@
 const Page = require('./helpers/page.js');
-const { assert, expect } = require('chai');
+const {assert, expect} = require('chai');
 const chalk = require('chalk');
 
 let page;
@@ -8,9 +8,9 @@ const actions = [
     {
         method: 'post',
         path: 'http://localhost:3000/blogs',
-        data: { title: 'My title', subtitle: 'My subtitle', body: 'My body' }
+        data: {title: 'My title', subtitle: 'My subtitle', body: 'My body'}
     }]
-    ;
+;
 
 before(async () => {
     page = await Page.build();

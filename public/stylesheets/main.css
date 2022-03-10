@@ -1,61 +1,61 @@
 body,
 html {
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
 }
 
 #about-us {
-  background: linear-gradient(
-    to bottom,
-    hsl(171, 100%, 41%),
-    hsl(204, 86%, 20%)
-  );
+    background: linear-gradient(
+            to bottom,
+            hsl(171, 100%, 41%),
+            hsl(204, 86%, 20%)
+    );
 }
 
 #expo {
-  background: linear-gradient(
-    to bottom,
-    hsl(204, 86%, 20%),
-    hsl(171, 100%, 41%)
-  );
+    background: linear-gradient(
+            to bottom,
+            hsl(204, 86%, 20%),
+            hsl(171, 100%, 41%)
+    );
 }
 
 #blog-hero {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .footer {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .rounded {
-  border-radius: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .partner-logo {
-  opacity: 0.5;
-  margin: 0.5rem;
-  max-height: 3.5rem;
+    opacity: 0.5;
+    margin: 0.5rem;
+    max-height: 3.5rem;
 }
 
 .navbar-item {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .feature {
-  margin: auto;
-  max-width: 20rem;
-  max-height: fit-content;
+    margin: auto;
+    max-width: 20rem;
+    max-height: fit-content;
 }
 
 .card-image {
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .rotated {
-  transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }

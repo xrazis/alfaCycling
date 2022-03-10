@@ -7,9 +7,9 @@
                 <h1 class="is-size-1">Register</h1>
                 <form method="POST">
                     <% if (error){ %>
-                    <div class="notification is-danger">
-                        <%= error %>
-                    </div>
+                        <div class="notification is-danger">
+                            <%= error %>
+                        </div>
                     <% } %>
                     <div class="columns is-multiline">
                         <div class="column is-12">
@@ -39,7 +39,7 @@
                         <div class="column is-12">
                             <p class="control has-icons-left">
                                 <input class="input is-medium" type="password" placeholder="Password repeat"
-                                    name="password_repeat">
+                                       name="password_repeat">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -48,7 +48,7 @@
                         <div class="column is-12">
                             <p class="control has-icons-left has-icons-right">
                                 <input class="input is-medium" type="password" name="admin_code"
-                                    placeholder="Admin Code">
+                                       placeholder="Admin Code">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-cog"></i>
                                 </span>

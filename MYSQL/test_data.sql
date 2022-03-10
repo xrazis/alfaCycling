@@ -1,4 +1,5 @@
-# noinspection SqlIdentifierLengthForFile
+#
+noinspection SqlIdentifierLengthForFile
 
 # noinspection SqlResolveForFile
 
@@ -30,4 +31,5 @@ VALUES ("1b0de3a2",
         "xrazis");
 
 INSERT INTO users (id, email, username, password, role)
-VALUES ("3c3ef790", "test@email.com", "tuser", "$2b$10$nf7GlcbGqVDCmo/t6.tOFeIjrBDr76hAVS1yAZ4SQcql/tqez50xO", "moderator");
+VALUES ("3c3ef790", "test@email.com", "tuser", "$2b$10$nf7GlcbGqVDCmo/t6.tOFeIjrBDr76hAVS1yAZ4SQcql/tqez50xO",
+        "moderator");

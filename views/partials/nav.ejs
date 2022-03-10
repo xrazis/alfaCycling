@@ -5,7 +5,7 @@
                 <i class="rotated fas fa-biking"></i><span class="is-size-4">&nbsp;AΛΦΑ</span>
             </a>
             <div id="nav-toggle" class="navbar-burger burger" data-target="nav-menu"
-                onclick="document.querySelector('#nav-menu').classList.toggle('is-active');">
+                 onclick="document.querySelector('#nav-menu').classList.toggle('is-active');">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -39,36 +39,36 @@
                     Gallery
                 </a>
                 <% if(currentUser){ %>
-                <div class="navbar-item">
-                    <div class="field is-grouped">
-                        <p class="control">
-                            <a class="bd-tw-button button" href="/admin-panel"><span class="icon">
+                    <div class="navbar-item">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a class="bd-tw-button button" href="/admin-panel"><span class="icon">
                                     <i class="fas fa-users-cog"></i>
                                 </span>
-                                <span>
+                                    <span>
                                     Admin
                                 </span>
-                            </a>
-                        </p>
+                                </a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <%}else{%>
-                <div class="navbar-item">
-                    <div class="field is-grouped">
-                        <p class="control">
-                            <a class="bd-tw-button button" href="https://github.com/xrazis/alfacycling.com">
+                <% }else{ %>
+                    <div class="navbar-item">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a class="bd-tw-button button" href="https://github.com/xrazis/alfacycling.com">
                                 <span class="icon">
                                     <i class="fab fa-github"></i>
                                 </span>
-                                <span>
+                                    <span>
                                     Source
                                 </span>
-                            </a>
-                        </p>
+                                </a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <%}%>            
+                <% } %>
+            </div>
         </div>
-    </div>
     </div>
 </nav>

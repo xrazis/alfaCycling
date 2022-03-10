@@ -3,10 +3,10 @@ const db = require('../connections/db_conn'),
 
 module.exports = {
     insertToDatabase: async (req) => {
-        const { title, subtitle, body } = req.body;
-        const { username } = req.user;
+        const {title, subtitle, body} = req.body;
+        const {username} = req.user;
         const image = req.file.path.replace(/public/, '');
-        const id = crypto.randomBytes(4).toString("hex");
+        const id = crypto.randomBytes(4).toString('hex');
 
         const newBlog = [id, title, subtitle, image, body, username, username];
         const sql = 'INSERT INTO blogs (id,title,subtitle,image,body,posted_by,edited_by) VALUES (?, ?, ?, ?, ?, ?, ?);';
@@ -16,8 +16,8 @@ module.exports = {
         return id;
     },
     updateDatabase: async (req) => {
-        const { title, subtitle, body } = req.body;
-        const { username } = req.user;
+        const {title, subtitle, body} = req.body;
+        const {username} = req.user;
         const id = req.params.id;
         const image = req.file.path.replace(/public/, '');
         const edited = new Date();

@@ -10,8 +10,10 @@
     <div class="hero-foot">
         <div class="buttons">
             <div class="container mb-5">
-                <a href="/blogs/new"><button class="button is-success is-medium">New Blog&ensp;<i
-                            class="far fa-plus-square"></i></button></a>
+                <a href="/blogs/new">
+                    <button class="button is-success is-medium">New Blog&ensp;<i
+                                class="far fa-plus-square"></i></button>
+                </a>
             </div>
         </div>
     </div>
@@ -20,40 +22,44 @@
     <div class="container">
         <div class="columns">
             <div class="column is-three-fifths">
-                <% if(blogs) {%> <% blogs.forEach((blog, blogs) => { %>
-                <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-128x128">
-                            <img src="<%= blog.image %>">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <nav class="level">
-                            <div class="content level-right">
-                                <p>
-                                    <a href="/blogs/<%=blog.id%>"><strong><%= blog.title %></strong></a>
-                                    <br>
-                                    <small>Created: </small>
-                                    <small>@<%= blog.posted_by %></small> on
-                                    <small><%= blog.created.toDateString() %></small>
-                                    <br>
-                                    <small>Edited: </small>
-                                    <small>@<%= blog.edited_by %></small> on
-                                    <small><%= blog.edited.toDateString() %></small>
-                                </p>
-                            </div>
-                            <div class="level-left">
-                                <a class="level-item" href="/blogs/<%=blog.id%>/edit">
-                                    <button class="button is-warning">Edit&ensp;<i class="fas fa-hammer"></i></button>
-                                </a>
-                                <form class="level-item" action="/blogs/<%=blog.id%>?_method=DELETE" method="POST">
-                                    <button class="button is-danger">Delete&ensp;<i class="fas fa-skull"></i></button>
-                                </form>
-                            </div>
-                        </nav>
-                    </div>
-                </article>
-                <% }) %> <% } %>
+                <% if(blogs) { %> <% blogs.forEach((blog, blogs) => { %>
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-128x128">
+                                <img src="<%= blog.image %>">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <nav class="level">
+                                <div class="content level-right">
+                                    <p>
+                                        <a href="/blogs/<%= blog.id %>"><strong><%= blog.title %></strong></a>
+                                        <br>
+                                        <small>Created: </small>
+                                        <small>@<%= blog.posted_by %></small> on
+                                        <small><%= blog.created.toDateString() %></small>
+                                        <br>
+                                        <small>Edited: </small>
+                                        <small>@<%= blog.edited_by %></small> on
+                                        <small><%= blog.edited.toDateString() %></small>
+                                    </p>
+                                </div>
+                                <div class="level-left">
+                                    <a class="level-item" href="/blogs/<%= blog.id %>/edit">
+                                        <button class="button is-warning">Edit&ensp;<i class="fas fa-hammer"></i>
+                                        </button>
+                                    </a>
+                                    <form class="level-item" action="/blogs/<%= blog.id %>?_method=DELETE"
+                                          method="POST">
+                                        <button class="button is-danger">Delete&ensp;<i class="fas fa-skull"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
+                    </article>
+                <% }) %>
+                <% } %>
             </div>
             <div class="column is-one-fifths"></div>
             <div class="column is-one-fifths">

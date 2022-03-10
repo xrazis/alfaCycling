@@ -3,7 +3,7 @@ const db = require('../connections/db_conn'),
 
 module.exports = {
     insertUser: async (username, hash) => {
-        const id = crypto.randomBytes(4).toString("hex");
+        const id = crypto.randomBytes(4).toString('hex');
 
         const newUser = [id, username, hash, 'moderator']
         const sql = 'INSERT INTO users (id, username, password, role ) values (?, ?, ?, ?)';
@@ -13,7 +13,7 @@ module.exports = {
         return;
     },
     insertUserEmail: async (req) => {
-        const { email, username } = req.body;
+        const {email, username} = req.body;
 
         const sql = 'UPDATE users SET email = ? WHERE username = ?;';
 

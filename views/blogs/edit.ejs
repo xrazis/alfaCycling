@@ -1,30 +1,30 @@
 <%- include('../partials/html-top.ejs') %> <%- include('../partials/nav.ejs') %>
 
-<script src="https://cdn.tiny.cloud/1/<%-tiny_api%>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>tinymce.init({ selector: 'textarea' });</script>
+<script src="https://cdn.tiny.cloud/1/<%- tiny_api %>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({selector: 'textarea'});</script>
 
 <section class="section is-medium">
     <div class="container">
         <div class="columns">
             <div class="column is-6 is-offset-3">
                 <h1 class="is-size-1">Edit blog</h1>
-                <form method="POST" action="/blogs/<%=blog_id%>?_method=PUT" enctype="multipart/form-data">
+                <form method="POST" action="/blogs/<%= blog_id %>?_method=PUT" enctype="multipart/form-data">
                     <div class="columns is-multiline">
                         <div class="column is-12">
                             <p class="control  ">
                                 <input class="input is-medium" type="text" name="title" placeholder="Blog Title"
-                                    value="<%= blog[0].title%>">
+                                       value="<%= blog[0].title %>">
                             </p>
                         </div>
                         <div class="column is-12">
                             <p class="control  ">
                                 <input class="input is-medium" type="text" name="subtitle" placeholder="Subtitle"
-                                    value="<%= blog[0].subtitle%>">
+                                       value="<%= blog[0].subtitle %>">
                             </p>
                         </div>
                         <div class="column is-12">
                             <p class="control  ">
-                                <textarea name="body" class="textarea" rows="10"><%- blog[0].body%></textarea>
+                                <textarea name="body" class="textarea" rows="10"><%- blog[0].body %></textarea>
                             </p>
                         </div>
                         <div class="column is-12">

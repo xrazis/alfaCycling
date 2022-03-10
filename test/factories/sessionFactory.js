@@ -13,5 +13,5 @@ module.exports = (id) => {
     const session = buffer.from(JSON.stringify(sessionObject)).toString('base64');
     const sig = keygrip.sign('express:sess=' + session);
 
-    return { session, sig };
+    return {session, sig};
 };

@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
-const { insertUser, findUser, findUserById } = require('../actions/db_actions_users');
+const {insertUser, findUser, findUserById} = require('../actions/db_actions_users');
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -31,12 +31,14 @@ passport.use('register', new LocalStrategy({
             try {
                 await insertUser(username, hash);
             } catch (error) {
-                const errors = [{ value: 'Exists', msg: 'Error in Register!!', param: 'password', location: 'passport' }];
+                const errors = [{value: 'Exists', msg: 'Error in Register!!', param: 'password', location: 'passport'}];
                 return done(null, false, errors);
-            };
+            }
+            ;
             const user = await findUser(username);
             return done(null, user[0]);
-        };
+        }
+        ;
     });
 }));
 
@@ -51,7 +53,7 @@ passport.use('login', new LocalStrategy({
         if (result) {
             return done(null, user[0]);
         } else {
-            const errors = [{ value: 'Exists', msg: 'Wrong Password!', param: 'password', location: 'passport' }];
+            const errors = [{value: 'Exists', msg: 'Wrong Password!', param: 'password', location: 'passport'}];
             return done(null, false, errors);
         }
     })
